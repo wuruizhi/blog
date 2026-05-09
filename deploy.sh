@@ -96,18 +96,19 @@ systemctl enable nginx
 echo "  ✅ Nginx 已启动并设为开机自启"
 
 # 完成
-SERVER_IP=$(hostname -I | awk '{print $1}')
+# 获取公网 IP（云服务器 hostname -I 返回的是内网 IP）
+PUBLIC_IP=$(curl -s --max-time 3 ifconfig.me 2>/dev/null || curl -s --max-time 3 ip.sb 2>/dev/null || hostname -I | awk '{print $1}')
 echo ""
 echo "========================================="
 echo "  🎉 部署完成！"
 echo ""
 if [ "$DOMAIN" = "_" ]; then
-    echo "  访问: http://${SERVER_IP}:${PORT}"
+    echo "  访问: http://${PUBLIC_IP}:${PORT}"
 else
     echo "  访问: http://${DOMAIN}:${PORT}"
 fi
 echo ""
-echo "  ⚠️  请确保云服务器安全组已放行端口 ${PORT}"
+echo "  ⚠️  请确保云服务器安全组已放行 TCP 端口 ${PORT}"
 echo ""
 echo "  更新网站: 修改文件后重新运行"
 echo "  sudo bash deploy.sh"
