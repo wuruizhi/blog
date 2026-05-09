@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="学术主页 - 青年学者个人学术网站，展示研究成果、论文发表与学术经历">
+    <meta name="keywords" content="学术主页, 博士, 研究, 论文, 计算机科学">
+    <title>Dr. Your Name | Academic Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cursor glow effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>YN<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-text="About">About</a></li>
+                <li><a href="#research" data-text="Research">Research</a></li>
+                <li><a href="#publications" data-text="Publications">Publications</a></li>
+                <li><a href="#experience" data-text="Experience">Experience</a></li>
+                <li><a href="#awards" data-text="Awards">Awards</a></li>
+                <li><a href="#contact" data-text="Contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting animate-in">Hello, I am</p>
+                <h1 class="hero-name animate-in">
+                    <span class="name-line">Your</span>
+                    <span class="name-line accent">Name</span>
+                </h1>
+                <div class="hero-title-wrapper animate-in">
+                    <span class="hero-title-tag">&lt;h2&gt;</span>
+                    <h2 class="hero-title" id="typingText"></h2>
+                    <span class="typing-cursor">|</span>
+                    <span class="hero-title-tag">&lt;/h2&gt;</span>
+                </div>
+                <p class="hero-desc animate-in">PhD in Computer Science · Researcher in AI & Cloud Computing</p>
+                <div class="hero-cta animate-in">
+                    <a href="#publications" class="btn btn-primary">
+                        <span>View Publications</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <span>Get in Touch</span>
+                    </a>
+                </div>
+                <div class="hero-stats animate-in">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Publications</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="200">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Citations</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual animate-in">
+                <div class="avatar-wrapper">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-ring ring-2"></div>
+                    <div class="avatar-placeholder">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <!-- Replace with: <img src="avatar.jpg" alt="Your Name" class="avatar-img"> -->
+                </div>
+                <div class="floating-badge badge-1"><i class="fas fa-brain"></i> AI</div>
+                <div class="floating-badge badge-2"><i class="fas fa-cloud"></i> Cloud</div>
+                <div class="floating-badge badge-3"><i class="fas fa-network-wired"></i> Systems</div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;about&gt;</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal-up">
+                    <p class="about-intro">
+                        I am a <strong>PhD graduate</strong> in Computer Science from 
+                        <strong>XXX University</strong>, specializing in intelligent scheduling, 
+                        cloud computing, and AI-driven systems optimization.
+                    </p>
+                    <p>
+                        My research focuses on leveraging Graph Neural Networks and Large Language Models 
+                        to solve complex resource scheduling problems in cloud and edge computing environments. 
+                        I have published multiple papers at top-tier venues including IEEE TPDS, INFOCOM, and ICWS.
+                    </p>
+                    <p>
+                        I am passionate about bridging the gap between theoretical AI advances and practical 
+                        systems engineering, creating intelligent solutions that improve efficiency and 
+                        reduce costs in real-world computing infrastructures.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div>
+                                <h4>PhD in CS</h4>
+                                <p>XXX University, 2021-2025</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-microscope"></i></div>
+                            <div>
+                                <h4>Research Focus</h4>
+                                <p>AI for Systems, Cloud Computing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-skills reveal-up">
+                    <h3 class="skills-title">Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-fire"></i></div>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
+                            <span>GNN</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                            <span>LLM</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                            <span>Cloud</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-docker"></i></div>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <span>K8s</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-linux"></i></div>
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="section section-alt" id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;research&gt;</span>
+                <h2 class="section-title">Research Interests</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="research-grid">
+                <div class="research-card reveal-up">
+                    <div class="research-card-glow"></div>
+                    <div class="research-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI for Systems</h3>
+                    <p>Applying deep learning and reinforcement learning techniques to optimize complex systems, including task scheduling, resource allocation, and auto-scaling in cloud environments.</p>
+                    <div class="research-tags">
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Reinforcement Learning</span>
+                        <span class="tag">Optimization</span>
+                    </div>
+                </div>
+                <div class="research-card reveal-up">
+                    <div class="research-card-glow"></div>
+                    <div class="research-icon"><i class="fas fa-diagram-project"></i></div>
+                    <h3>Graph Neural Networks</h3>
+                    <p>Developing novel GNN architectures for modeling complex dependencies in distributed computing systems, enabling structure-aware decision making for scheduling problems.</p>
+                    <div class="research-tags">
+                        <span class="tag">GNN</span>
+                        <span class="tag">Graph Theory</span>
+                        <span class="tag">Representation Learning</span>
+                    </div>
+                </div>
+                <div class="research-card reveal-up">
+                    <div class="research-card-glow"></div>
+                    <div class="research-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+                    <h3>Cloud & Edge Computing</h3>
+                    <p>Researching intelligent resource management and workflow scheduling strategies for heterogeneous cloud and edge computing platforms to improve QoS and reduce costs.</p>
+                    <div class="research-tags">
+                        <span class="tag">Serverless</span>
+                        <span class="tag">Microservices</span>
+                        <span class="tag">Edge AI</span>
+                    </div>
+                </div>
+                <div class="research-card reveal-up">
+                    <div class="research-card-glow"></div>
+                    <div class="research-icon"><i class="fas fa-comments"></i></div>
+                    <h3>LLM Applications</h3>
+                    <p>Exploring the potential of Large Language Models for code generation, system configuration, and intelligent decision-making in automated operations and maintenance.</p>
+                    <div class="research-tags">
+                        <span class="tag">LLM</span>
+                        <span class="tag">Code Generation</span>
+                        <span class="tag">AIOps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="section" id="publications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;publications&gt;</span>
+                <h2 class="section-title">Selected Publications</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">
+                    <i class="fas fa-book-open"></i> Full list available on 
+                    <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+                </p>
+            </div>
+            <div class="pub-filters">
+                <button class="pub-filter active" data-filter="all">All</button>
+                <button class="pub-filter" data-filter="journal">Journal</button>
+                <button class="pub-filter" data-filter="conference">Conference</button>
+            </div>
+            <div class="pub-list">
+                <article class="pub-item reveal-up" data-type="journal">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <div class="pub-venue"><span class="venue-badge journal">Journal</span> IEEE TPDS</div>
+                        <h3 class="pub-title">GNN-LLM Based Intelligent Scheduler for Heterogeneous Cloud Workflows</h3>
+                        <p class="pub-authors"><strong>Your Name</strong>, Co-Author A, Co-Author B, Advisor Name</p>
+                        <p class="pub-desc">A novel scheduling framework combining Graph Neural Networks with Large Language Models for efficient workflow management in heterogeneous cloud environments.</p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" class="pub-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="pub-link"><i class="fas fa-quote-right"></i> Cite</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="pub-item reveal-up" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <div class="pub-venue"><span class="venue-badge conference">Conference</span> IEEE ICWS</div>
+                        <h3 class="pub-title">Efficient Microservice Scheduling with Structure-Aware Graph Learning</h3>
+                        <p class="pub-authors"><strong>Your Name</strong>, Co-Author C, Advisor Name</p>
+                        <p class="pub-desc">Proposing a structure-aware graph learning approach for optimizing microservice scheduling in cloud-native applications.</p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" class="pub-link"><i class="fas fa-quote-right"></i> Cite</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="pub-item reveal-up" data-type="conference">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <div class="pub-venue"><span class="venue-badge conference">Conference</span> IEEE INFOCOM</div>
+                        <h3 class="pub-title">Adaptive Resource Allocation in Edge Computing via Deep Reinforcement Learning</h3>
+                        <p class="pub-authors"><strong>Your Name</strong>, Co-Author D, Co-Author E, Advisor Name</p>
+                        <p class="pub-desc">A deep reinforcement learning framework for adaptive resource allocation in multi-tier edge computing systems.</p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" class="pub-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="pub-link"><i class="fas fa-quote-right"></i> Cite</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="pub-item reveal-up" data-type="journal">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <div class="pub-venue"><span class="venue-badge journal">Journal</span> IEEE TSC</div>
+                        <h3 class="pub-title">Cost-Aware Serverless Workflow Orchestration with Predictive Scaling</h3>
+                        <p class="pub-authors"><strong>Your Name</strong>, Co-Author F, Advisor Name</p>
+                        <p class="pub-desc">A cost-optimization framework for serverless workflow orchestration leveraging predictive scaling models.</p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" class="pub-link"><i class="fas fa-quote-right"></i> Cite</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="pub-item reveal-up" data-type="conference">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <div class="pub-venue"><span class="venue-badge conference">Conference</span> ACM SoCC</div>
+                        <h3 class="pub-title">Latency-Sensitive Task Scheduling for Geo-Distributed Cloud Systems</h3>
+                        <p class="pub-authors"><strong>Your Name</strong>, Co-Author G, Advisor Name</p>
+                        <p class="pub-desc">Addressing latency optimization in geo-distributed cloud systems through intelligent task placement strategies.</p>
+                        <div class="pub-links">
+                            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" class="pub-link"><i class="fas fa-quote-right"></i> Cite</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section class="section section-alt" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;experience&gt;</span>
+                <h2 class="section-title">Education & Experience</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge">Education</div>
+                        <h3>Ph.D. in Computer Science</h3>
+                        <h4>XXX University</h4>
+                        <span class="timeline-date">2021 - 2025</span>
+                        <p>Research focus on AI-driven cloud scheduling. Advisor: Prof. XXX. Published 10+ papers at top venues. GPA: X.X/4.0</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge">Internship</div>
+                        <h3>Research Intern</h3>
+                        <h4>XXX Research Lab / Company</h4>
+                        <span class="timeline-date">2024 Summer</span>
+                        <p>Worked on large-scale distributed system optimization. Implemented and deployed ML-based scheduling algorithms in production environment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge">Education</div>
+                        <h3>B.Eng. in Software Engineering</h3>
+                        <h4>XXX University</h4>
+                        <span class="timeline-date">2017 - 2021</span>
+                        <p>Graduated with honors. Active in ACM programming contests and open-source community. GPA: X.X/4.0</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge">Project</div>
+                        <h3>Open Source Contributor</h3>
+                        <h4>Kubernetes / Cloud Native Projects</h4>
+                        <span class="timeline-date">2020 - Present</span>
+                        <p>Contributed to cloud-native ecosystem projects including scheduler plugins and monitoring tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="section" id="awards">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;awards&gt;</span>
+                <h2 class="section-title">Honors & Awards</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="awards-grid">
+                <div class="award-card reveal-up">
+                    <div class="award-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="award-info">
+                        <h3>National Scholarship</h3>
+                        <p>Ministry of Education, China</p>
+                        <span class="award-year">2024</span>
+                    </div>
+                </div>
+                <div class="award-card reveal-up">
+                    <div class="award-icon"><i class="fas fa-medal"></i></div>
+                    <div class="award-info">
+                        <h3>Outstanding Graduate Student</h3>
+                        <p>XXX University</p>
+                        <span class="award-year">2024</span>
+                    </div>
+                </div>
+                <div class="award-card reveal-up">
+                    <div class="award-icon"><i class="fas fa-award"></i></div>
+                    <div class="award-info">
+                        <h3>Best Paper Award</h3>
+                        <p>XXX Conference 2023</p>
+                        <span class="award-year">2023</span>
+                    </div>
+                </div>
+                <div class="award-card reveal-up">
+                    <div class="award-icon"><i class="fas fa-star"></i></div>
+                    <div class="award-info">
+                        <h3>First-Class Academic Scholarship</h3>
+                        <p>XXX University</p>
+                        <span class="award-year">2022, 2023</span>
+                    </div>
+                </div>
+                <div class="award-card reveal-up">
+                    <div class="award-icon"><i class="fas fa-code"></i></div>
+                    <div class="award-info">
+                        <h3>ACM/ICPC Regional Gold Medal</h3>
+                        <p>Asia Regional Contest</p>
+                        <span class="award-year">2020</span>
+                    </div>
+                </div>
+                <div class="award-card reveal-up">
+                    <div class="award-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="award-info">
+                        <h3>Outstanding Undergraduate Thesis</h3>
+                        <p>XXX University</p>
+                        <span class="award-year">2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;contact&gt;</span>
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Feel free to reach out for collaborations, opportunities, or just a chat!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-cards">
+                    <a href="mailto:your.email@university.edu" class="contact-card reveal-up">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <h3>Email</h3>
+                        <p>your.email@university.edu</p>
+                    </a>
+                    <a href="https://scholar.google.com" target="_blank" class="contact-card reveal-up">
+                        <div class="contact-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Google Scholar</h3>
+                        <p>View my profile</p>
+                    </a>
+                    <a href="https://github.com/yourgithub" target="_blank" class="contact-card reveal-up">
+                        <div class="contact-icon"><i class="fab fa-github"></i></div>
+                        <h3>GitHub</h3>
+                        <p>@yourgithub</p>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="contact-card reveal-up">
+                        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                        <h3>LinkedIn</h3>
+                        <p>Connect with me</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>YN<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">Designed & Built with <i class="fas fa-heart"></i> · © 2025 Your Name</p>
+                <div class="footer-links">
+                    <a href="https://github.com/yourgithub" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="mailto:your.email@university.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

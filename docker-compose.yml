@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  blog:
+    build: .
+    container_name: academic-blog
+    ports:
+      - "80:80"
+    restart: always
