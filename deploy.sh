@@ -8,6 +8,11 @@ set -e
 SITE_DIR="/var/www/blog"
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# ========== 自定义配置 ==========
+PORT=10086                     # 访问端口（记得在云服务器安全组放行此端口）
+DOMAIN="_"                     # 域名，买好后改成你的域名，例如 "blog.example.top"
+# ================================
+
 echo "========================================="
 echo "  🎓 学术主页 - 一键部署"
 echo "========================================="
@@ -50,10 +55,10 @@ fi
 
 # 使用 sites-available/sites-enabled（位于 http{} 内部，正确支持 server 块）
 mkdir -p /etc/nginx/sites-available
-cat > /etc/nginx/sites-available/blog << 'EOF'
+cat > /etc/nginx/sites-available/blog << EOF
 server {
-    listen 80;
-    server_name _;
+    listen ${PORT};
+    server_name ${DOMAIN};
     root /var/www/blog;
     index index.html;
 
@@ -91,11 +96,18 @@ systemctl enable nginx
 echo "  ✅ Nginx 已启动并设为开机自启"
 
 # 完成
+SERVER_IP=$(hostname -I | awk '{print $1}')
 echo ""
 echo "========================================="
 echo "  🎉 部署完成！"
 echo ""
-echo "  访问: http://$(hostname -I | awk '{print $1}')"
+if [ "$DOMAIN" = "_" ]; then
+    echo "  访问: http://${SERVER_IP}:${PORT}"
+else
+    echo "  访问: http://${DOMAIN}:${PORT}"
+fi
+echo ""
+echo "  ⚠️  请确保云服务器安全组已放行端口 ${PORT}"
 echo ""
 echo "  更新网站: 修改文件后重新运行"
 echo "  sudo bash deploy.sh"
