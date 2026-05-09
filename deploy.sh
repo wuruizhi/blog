@@ -38,8 +38,15 @@ echo "  ✅ 文件已部署到 $SITE_DIR"
 echo ""
 echo "[3/4] 配置 Nginx..."
 
-# 清理错误的 vhost 配置（vhost/ 在 nginx.conf 中位于 http{} 外部，不能放 server 块）
-rm -f /etc/nginx/vhost/blog.conf 2>/dev/null
+# 修复 nginx.conf: 将 vhost include 从 http{} 外部移到 http{} 内部
+NGINX_CONF="/etc/nginx/nginx.conf"
+if grep -q '^include /etc/nginx/vhost/' "$NGINX_CONF" 2>/dev/null; then
+    echo "  🔧 修复 nginx.conf: 将 vhost include 移入 http{} 块内..."
+    # 移除顶层的 include（在 http{} 外面的那行）
+    sed -i '/^include \/etc\/nginx\/vhost\//d' "$NGINX_CONF"
+    # 在 http{} 块末尾插入（在最后一个 } 之前）
+    sed -i '/include \/etc\/nginx\/sites-enabled/a\    include /etc/nginx/vhost/*.conf;' "$NGINX_CONF"
+fi
 
 # 使用 sites-available/sites-enabled（位于 http{} 内部，正确支持 server 块）
 mkdir -p /etc/nginx/sites-available
