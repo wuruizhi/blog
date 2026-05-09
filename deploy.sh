@@ -67,13 +67,13 @@ server {
     gzip_min_length 1000;
     gzip_vary on;
 
-    location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg|woff2?|ttf|eot)$ {
+    location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg|woff2?|ttf|eot)\$ {
         expires 30d;
         add_header Cache-Control "public, immutable";
     }
 
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files \$uri \$uri/ /index.html;
     }
 
     add_header X-Frame-Options "SAMEORIGIN" always;
